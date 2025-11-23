@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const VideoSchema = new mongoose.Schema({
-  userId: mongoose.Schema.Types.ObjectId,
-  url: String,
-  caption: String,
-  thumbnail: String,
-  likesCount: { type: Number, default: 0 },
-  commentsCount: { type: Number, default: 0 },
-  createdAt: { type: Date, default: Date.now },
-});
+const videoSchema = new mongoose.Schema({
+  url: { type: String, required: true },       // file path or URL
+  caption: { type: String },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  comments: [{ user: String, text: String, createdAt: Date }],
+}, { timestamps: true });
 
-module.exports = mongoose.model("Video", VideoSchema);
+const Video = mongoose.model('Video', videoSchema);
+
+module.exports = Video;
