@@ -10,7 +10,7 @@ export default function Upload() {
     form.append("video", video);
     form.append("caption", caption);
 
-    const res = await api.post("/video/upload", form);
+    await api.post("/video/upload", form); // removed unused 'res'
     alert("Uploaded!");
   };
 
