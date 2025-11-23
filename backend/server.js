@@ -10,7 +10,7 @@ const connectDB = require("./config/db");
 connectDB();
 
 const app = express();
-
+const authRoutes = require("./routes/auth.routes"); // the router you created
 // Middlewares
 app.use(cors());
 app.use(express.json());
@@ -20,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/auth", require("./routes/auth"));
 app.use("/video", require("./routes/video"));
 app.use("/comment", require("./routes/comment"));
+app.use("/auth", authRoutes);
+
 
 // Serve uploads statically
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));

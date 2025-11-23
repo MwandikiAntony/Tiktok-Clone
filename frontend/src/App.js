@@ -3,6 +3,7 @@ import Feed from "./pages/Feed";
 import Upload from "./pages/Upload";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup"
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Route path="/upload" element={<Upload />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
+
       </Routes>
     </BrowserRouter>
   );
